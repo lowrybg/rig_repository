@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Rig
 
-# Create your views here.
+class RigListView(ListView):
+    model = Rig
+    template_name = 'showcase/catalog.html'
+    context_object_name = 'rigs'
