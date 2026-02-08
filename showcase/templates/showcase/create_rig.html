@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Add New Rig{% endblock %}
+
+{% block content %}
+    <h2>Showcase Your Build</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+            Publish Rig
+        </button>
+    </form>
+{% endblock %}
