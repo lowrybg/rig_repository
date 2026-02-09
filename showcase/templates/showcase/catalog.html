@@ -10,7 +10,8 @@
                 <p>{{ rig.description|truncatewords:10 }}</p>
                 <small>Created: {{ rig.created_at|date:"M d, Y" }}</small>
                 <br><br>
-                <a href="#" style="color: #007bff; text-decoration: none;">View Details &rarr;</a>
+               <a href="{% url 'edit_rig' rig.pk %}" style="color: orange;">Edit</a> |
+                <a href="{% url 'delete_rig' rig.pk %}" style="color: red;">Delete</a>
             </div>
         {% empty %}
             <p>No rigs found. Go to Admin to add some!</p>
