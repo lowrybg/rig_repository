@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ rig.name }}</h1>
+    <p><strong>Created:</strong> {{ rig.created_at }}</p>
+    <hr>
+    <h3>Description</h3>
+    <p>{{ rig.description }}</p>
+
+    <h3>Components</h3>
+    <ul>
+        {% for component in rig.components.all %}
+            <li><strong>{{ component.type }}:</strong> {{ component.brand }} {{ component.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+    <a href="{% url 'edit_rig' rig.pk %}">Edit</a> |
+    <a href="{% url 'catalog' %}">Back to Catalog</a>
+{% endblock %}
