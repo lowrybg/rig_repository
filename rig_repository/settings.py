@@ -32,6 +32,7 @@ PROJECT_APPS = [
     'common',
     'hardware',
     'showcase',
+    'marketplace',
 ]
 
 INSTALLED_APPS = [
