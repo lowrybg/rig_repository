@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Marketplace{% endblock %}
+
+{% block content %}
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2>Community Market</h2>
+        <a href="{% url 'create_listing' %}" style="background: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+            + Sell Item
+        </a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+
+        {% for item in listings %}
+            <div style="background: white; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between;">
+                    <h3 style="margin: 0;">{{ item.title }}</h3>
+                    <span style="color: #28a745; font-weight: bold; font-size: 1.2em;">{{ item.price }} BGN</span>
+                </div>
+
+                <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">
+                    Condition: {{ item.get_condition_display }}
+                    </p>
+
+                <p>{{ item.description|truncatewords:15 }}</p>
+
+                <hr style="border: 0; border-top: 1px solid #eee;">
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <small>Seller: {{ item.seller.username }}</small>
+                    <a href="mailto:{{ item.contact_email }}" style="color: #007bff; text-decoration: none; font-weight: bold;">
+                        Contact Seller &rarr;
+                    </a>
+                </div>
+            </div>
+        {% empty %}
+            <div style="grid-column: 1 / -1; text-align: center; color: #777;">
+                <p>No active listings. Be the first to sell something!</p>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
