@@ -26,7 +26,7 @@ class Listing(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     condition = models.CharField(max_length=4, choices=CONDITION_CHOICES, default='USED')
-
+    related_component = models.ForeignKey(Component, on_delete=models.SET_NULL, null=True, blank=True)
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name='listings')
     created_at = models.DateTimeField(auto_now_add=True)
     contact_email = models.EmailField(help_text="Buyer will contact you here")
